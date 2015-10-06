@@ -1,5 +1,5 @@
-#NIOS II Syntax Hilighting
-Syntax hilighting for the NIOS-II virtual processor.
+#NIOS II Syntax Highlighting
+Syntax highlighting for the NIOS-II virtual processor.
 
 Published under the Apache 2 License (see [LICENSE](./LICENSE) for details)
 
