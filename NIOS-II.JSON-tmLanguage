@@ -9,19 +9,30 @@
     "patterns": [
 
         {   //preprocessor directives
-            "name": "keyword.control.preprocessor",
-            "match": "(\\.equ|\\.global) "
+            "name": "preprocessor.assignment",
+            "begin": "(?=(\\.equ|\\.global)\\s*[\\w0-9_]*)",
+            "end": "<<EOF>>|\n|,|(?=#)",
+            "patterns": [
+                {
+                    "name": "keyword.control.instruction",
+                    "match": "(\\.equ|\\.global)"
+                },
+                {
+                    "name": "entity.name.function.label",
+                    "match": "[\\w0-9_]*"
+                }
+            ]
         },
 
         {   //preprocessor directives
             "name": "keyword.control.instruction",
-            "match": "(add|addi|and|andhi|andi|beq|bge|bgeu|bgt|bgtu|ble|bley|blt|bltu|bne|break|bret|callr|cmpeq|cmpeqi|cmepge|cmpgei|cmpeu|cmpgt|cmgti|cmpgtui|cmple|cmplei|cmlpeu|cmpleui|cmplt|cmpltu|cmpltui|cmpne|cmpnei|custom|div|divu|eret|flushd|flushda|flushi|initd|initda|initi|jmp|ldb|ldbio|ldbu|ldbuio|ldh|ldhio|ldhu|ldhuio|ldw|ldwio|mov|movhi|movi|movia|movui|mul|muli|mulxss|mulxsu|mulxuu|nextpc|nop|nor|or|orhi|ori|rdctl|rdprc|ret|rol|roli|ror|sll|slli|sra|srai|srl|srli|stb|stbio|sth|sthio|stw|stwio|sub|subi|sync|trap|wrctl|wrprs|xor|xorhi|xori|ret)(\\s|\n|<<EOF>>)"
+            "match": "(add|addi|and|andhi|andi|beq|bge|bgeu|bgt|bgtu|ble|bley|blt|bleu|bltu|bne|break|bret|callr|cmpeq|cmpeqi|cmepge|cmpge|cmpgei|cmpgeu|cmpgeui|cmpgti|cmpgtu|cmpeu|cmpgt|cmgti|cmpgtui|cmplei|cmple|cmpleu|cmpleui|cmplt|cmplti|cmpltu|cmpltui|cmpne|cmpnei|custom|div|divu|eret|flushd|flushda|flushi|flushp|initd|initda|initi|jmp|ldb|ldbio|ldbu|ldbuio|ldh|ldhio|ldhu|ldhuio|ldw|ldwio|mov|movhi|movi|movia|movui|mul|muli|mulxss|mulxsu|mulxuu|nextpc|nop|nor|or|orhi|ori|rdprs|rdctl|rdprc|ret|rol|roli|ror|sll|slli|sra|srai|srl|srli|stb|stbio|sth|sthio|stw|stwio|sub|subi|sync|trap|wrctl|wrprs|xor|xorhi|xori|ret)(\\s|\n|<<EOF>>)"
         },
 
         { // branch, jmp, call
             "name": "flowcontrol",
-            "begin": "\\s(?=(jumpi|br|call)( \\w)?\\w*)",
-            "end": "$|\n",
+            "begin": "(^|\\s)(?=(jmpi|br|call)[\\s]\\w*)",
+            "end": "$|\n|(?=#)",
             "patterns": [
                 {
                     "name": "keyword.control.instruction",
@@ -74,7 +85,7 @@
 
         {   // numeric constants
             "name": "numeric.niosii",
-            "begin": " (?=-?[0-9]+)",
+            "begin": ".(?=-?[0-9]+)",
             "end": "[^0-9\\-]",
             "patterns": [
                 {
