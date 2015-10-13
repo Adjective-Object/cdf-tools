@@ -26,13 +26,13 @@
 
         {   //preprocessor directives
             "name": "keyword.control.instruction",
-            "match": "(add|addi|and|andhi|andi|beq|bge|bgeu|bgt|bgtu|ble|bley|blt|bleu|bltu|bne|break|bret|callr|cmpeq|cmpeqi|cmepge|cmpge|cmpgei|cmpgeu|cmpgeui|cmpgti|cmpgtu|cmpeu|cmpgt|cmgti|cmpgtui|cmplei|cmple|cmpleu|cmpleui|cmplt|cmplti|cmpltu|cmpltui|cmpne|cmpnei|custom|div|divu|eret|flushd|flushda|flushi|flushp|initd|initda|initi|jmp|ldb|ldbio|ldbu|ldbuio|ldh|ldhio|ldhu|ldhuio|ldw|ldwio|mov|movhi|movi|movia|movui|mul|muli|mulxss|mulxsu|mulxuu|nextpc|nop|nor|or|orhi|ori|rdprs|rdctl|rdprc|ret|rol|roli|ror|sll|slli|sra|srai|srl|srli|stb|stbio|sth|sthio|stw|stwio|sub|subi|sync|trap|wrctl|wrprs|xor|xorhi|xori|ret)(\\s|\n|<<EOF>>)"
+            "match": "(^|\\s)(add|addi|and|andhi|andi|beq|bge|bgeu|bgt|bgtu|ble|bley|blt|bleu|bltu|bne|break|bret|callr|cmpeq|cmpeqi|cmepge|cmpge|cmpgei|cmpgeu|cmpgeui|cmpgti|cmpgtu|cmpeu|cmpgt|cmgti|cmpgtui|cmplei|cmple|cmpleu|cmpleui|cmplt|cmplti|cmpltu|cmpltui|cmpne|cmpnei|custom|div|divu|eret|flushd|flushda|flushi|flushp|initd|initda|initi|jmp|ldb|ldbio|ldbu|ldbuio|ldh|ldhio|ldhu|ldhuio|ldw|ldwio|mov|movhi|movi|movia|movui|mul|muli|mulxss|mulxsu|mulxuu|nextpc|nop|nor|or|orhi|ori|rdprs|rdctl|rdprc|ret|rol|roli|ror|sll|slli|sra|srai|srl|srli|stb|stbio|sth|sthio|stw|stwio|sub|subi|sync|trap|wrctl|wrprs|xor|xorhi|xori|ret)(\\s|\n|<<EOF>>)"
         },
 
         { // branch, jmp, call
-            "name": "flowcontrol",
+            "name": "instruction_addr_immediate",
             "begin": "(^|\\s)(?=(jmpi|br|call)[\\s]\\w*)",
-            "end": "$|\n|(?=#)",
+            "end": "$|\n|(?=#)|[^\\w\\s_]",
             "patterns": [
                 {
                     "name": "keyword.control.instruction",
@@ -47,12 +47,12 @@
 
         {   //preprocessor directives
             "name": "deref",
-            "begin": "(?=[0-9a-zA-Z|_]*\\((r[0-9]|ra|sp)\\))",
-            "end": " |\n|#|<<EOF>>",
+            "begin": "(?=[0-9\\w_]*\\((r[0-9]+|bt|gp|sp|fp|ea|sstatus|ra)\\))",
+            "end": "(?<=\\))",
             "patterns": [
                 {
                     "name": "constant.numeric.offset.niosii",
-                    "match": ".*(?=\\()"
+                    "match": "[0-9\\w_]*(?=\\()"
                 },
                 {
                     "name": "constant.numeric.offset.control.paren",
@@ -81,16 +81,33 @@
             "patterns": [
             ]
         },
-
+        
+        {   // numeric constants
+            "name": "numeric.hex.niosii",
+            "begin": ".(?=-?0x[0-9a-fA-F])",
+            "end": "[^0-9\\-xa-fA-F]",
+            "patterns": [
+                {
+                    "name": "keyword.control.hex.numeric",
+                    "match": "[\\-]",
+                    "patterns": []
+                },
+                {
+                    "name": "constant.numeric",
+                    "match": "[x0-9a-fA-F]",
+                    "patterns": []
+                }
+            ]
+        },
 
         {   // numeric constants
             "name": "numeric.niosii",
-            "begin": ".(?=-?[0-9]+)",
-            "end": "[^0-9\\-]",
+            "begin": "[\\s\\(](?=-?[0-9])",
+            "end": "[^0-9]",
             "patterns": [
                 {
-                    "name": "keyword.control.negative.numeric",
-                    "match": "-",
+                    "name": "keyword.control.hex.numeric",
+                    "match": "[\\-]",
                     "patterns": []
                 },
                 {

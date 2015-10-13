@@ -36,7 +36,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(add|addi|and|andhi|andi|beq|bge|bgeu|bgt|bgtu|ble|bley|blt|bleu|bltu|bne|break|bret|callr|cmpeq|cmpeqi|cmepge|cmpge|cmpgei|cmpgeu|cmpgeui|cmpgti|cmpgtu|cmpeu|cmpgt|cmgti|cmpgtui|cmplei|cmple|cmpleu|cmpleui|cmplt|cmplti|cmpltu|cmpltui|cmpne|cmpnei|custom|div|divu|eret|flushd|flushda|flushi|flushp|initd|initda|initi|jmp|ldb|ldbio|ldbu|ldbuio|ldh|ldhio|ldhu|ldhuio|ldw|ldwio|mov|movhi|movi|movia|movui|mul|muli|mulxss|mulxsu|mulxuu|nextpc|nop|nor|or|orhi|ori|rdprs|rdctl|rdprc|ret|rol|roli|ror|sll|slli|sra|srai|srl|srli|stb|stbio|sth|sthio|stw|stwio|sub|subi|sync|trap|wrctl|wrprs|xor|xorhi|xori|ret)(\s|
+			<string>(^|\s)(add|addi|and|andhi|andi|beq|bge|bgeu|bgt|bgtu|ble|bley|blt|bleu|bltu|bne|break|bret|callr|cmpeq|cmpeqi|cmepge|cmpge|cmpgei|cmpgeu|cmpgeui|cmpgti|cmpgtu|cmpeu|cmpgt|cmgti|cmpgtui|cmplei|cmple|cmpleu|cmpleui|cmplt|cmplti|cmpltu|cmpltui|cmpne|cmpnei|custom|div|divu|eret|flushd|flushda|flushi|flushp|initd|initda|initi|jmp|ldb|ldbio|ldbu|ldbuio|ldh|ldhio|ldhu|ldhuio|ldw|ldwio|mov|movhi|movi|movia|movui|mul|muli|mulxss|mulxsu|mulxuu|nextpc|nop|nor|or|orhi|ori|rdprs|rdctl|rdprc|ret|rol|roli|ror|sll|slli|sra|srai|srl|srli|stb|stbio|sth|sthio|stw|stwio|sub|subi|sync|trap|wrctl|wrprs|xor|xorhi|xori|ret)(\s|
 |&lt;&lt;EOF&gt;&gt;)</string>
 			<key>name</key>
 			<string>keyword.control.instruction</string>
@@ -46,9 +46,9 @@
 			<string>(^|\s)(?=(jmpi|br|call)[\s]\w*)</string>
 			<key>end</key>
 			<string>$|
-|(?=#)</string>
+|(?=#)|[^\w\s_]</string>
 			<key>name</key>
-			<string>flowcontrol</string>
+			<string>instruction_addr_immediate</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -67,17 +67,16 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?=[0-9a-zA-Z|_]*\((r[0-9]|ra|sp)\))</string>
+			<string>(?=[0-9\w_]*\((r[0-9]+|bt|gp|sp|fp|ea|sstatus|ra)\))</string>
 			<key>end</key>
-			<string> |
-|#|&lt;&lt;EOF&gt;&gt;</string>
+			<string>(?&lt;=\))</string>
 			<key>name</key>
 			<string>deref</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
-					<string>.*(?=\()</string>
+					<string>[0-9\w_]*(?=\()</string>
 					<key>name</key>
 					<string>constant.numeric.offset.niosii</string>
 				</dict>
@@ -117,18 +116,45 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>.(?=-?[0-9]+)</string>
+			<string>.(?=-?0x[0-9a-fA-F])</string>
 			<key>end</key>
-			<string>[^0-9\-]</string>
+			<string>[^0-9\-xa-fA-F]</string>
+			<key>name</key>
+			<string>numeric.hex.niosii</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>[\-]</string>
+					<key>name</key>
+					<string>keyword.control.hex.numeric</string>
+					<key>patterns</key>
+					<array/>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[x0-9a-fA-F]</string>
+					<key>name</key>
+					<string>constant.numeric</string>
+					<key>patterns</key>
+					<array/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>[\s\(](?=-?[0-9])</string>
+			<key>end</key>
+			<string>[^0-9]</string>
 			<key>name</key>
 			<string>numeric.niosii</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
-					<string>-</string>
+					<string>[\-]</string>
 					<key>name</key>
-					<string>keyword.control.negative.numeric</string>
+					<string>keyword.control.hex.numeric</string>
 					<key>patterns</key>
 					<array/>
 				</dict>
