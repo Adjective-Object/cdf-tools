@@ -1,16 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Test file for syntax hilighting 488-lang %
+%                                          %
+%   its the bee's knees                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 'var' a ':' 'integer',
 'var' b ':' 'integer',
+'var' condtion ':' 'boolean',
 'var' string ':' 'text',
 
 a ':' '=' 3 '+' 2,
 b ':' '=' a '+' 2,
-string ':' ':' "testtring",
+string ':' '=' "testtring",
+condition '=' 'true'
 
 'if' a '>'' b 'then' b '='' b '+' 1,
 'if' a '<'' b 'then' b '='' b '+' 1 'else' 3,
 
-'while' '(' a '<' b ')' 
-    'do' a '=' a + 3
+'while' '(' condition ')' 
+    'do' condition '=' 'false',
 
 'repeat' a '=' a + 1 
     'until' a '>=' 100,
