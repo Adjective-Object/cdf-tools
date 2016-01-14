@@ -10,27 +10,27 @@
 
         {   //operators
             "name": "storage.function.488",
-            "match": "'(,|-|\\*|<|\\+|-|=|<|<=|>|>=|not|and|or|\\[|\\]|\\(|\\))'"
+            "match": "(:=|-|\\*|<|\\+|-|=|<|<=|>|>=|not|and|or)"
         },
 
         {   //quoted control symbols
             "name": "keyword.control.488",
-            "match": "'(if|else|then|var|repeat|until|while|do|exit|not|when|write|newline|return|:|\\.\\.)'"
+            "match": "(if|else|then|var|repeat|until|while|do|exit|not|when|write|newline|return|:|\\.\\.)"
         },
 
         {   //quoted typedef symbols
             "name": "storage.class.type.488",
-            "match": "'(integer|boolean|text)'"
+            "match": "(integer|boolean|text)"
         },
 
         {
             "name": "constant.language.boolean.488",
-            "match": "'(true|false)'"
+            "match": "(true|false)"
         },
 
         {   //quoted symbol
             "name": "entity.name.function.488",
-            "match": "'(function|procedure)'\\s*(\\w*+)?"
+            "match": "(function|procedure)\\s*(\\w*+)?"
         },
 
         // {   // errors on unknown quoted symbol

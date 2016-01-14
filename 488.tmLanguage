@@ -12,31 +12,31 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>'(,|-|\*|&lt;|\+|-|=|&lt;|&lt;=|&gt;|&gt;=|not|and|or|\[|\]|\(|\))'</string>
+			<string>(:=|-|\*|&lt;|\+|-|=|&lt;|&lt;=|&gt;|&gt;=|not|and|or)</string>
 			<key>name</key>
 			<string>storage.function.488</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>'(if|else|then|var|repeat|until|while|do|exit|not|when|write|newline|return|:|\.\.)'</string>
+			<string>(if|else|then|var|repeat|until|while|do|exit|not|when|write|newline|return|:|\.\.)</string>
 			<key>name</key>
 			<string>keyword.control.488</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>'(integer|boolean|text)'</string>
+			<string>(integer|boolean|text)</string>
 			<key>name</key>
 			<string>storage.class.type.488</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>'(true|false)'</string>
+			<string>(true|false)</string>
 			<key>name</key>
 			<string>constant.language.boolean.488</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>'(function|procedure)'\s*(\w*+)?</string>
+			<string>(function|procedure)\s*(\w*+)?</string>
 			<key>name</key>
 			<string>entity.name.function.488</string>
 		</dict>

@@ -1,70 +1,70 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Test file for syntax hilighting 488-lang %
 %                                          %
-%   its the bee's knees                    %
+%   its the bees knees                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-'var' a ':' 'integer',
-'var' b ':' 'integer',
-'var' condtion ':' 'boolean',
-'var' string ':' 'text',
+var a : integer,
+var b : integer,
+var condtion : boolean,
+var string : text,
 
-a ':' '=' 3 '+' 2,
-b ':' '=' a '+' 2,
-string ':' '=' "testtring",
-condition '=' 'true'
+a := 3 + 2,
+b := a + 2,
+string := "testtring",
+condition := true
 
-'if' a '>'' b 'then' b '='' b '+' 1,
-'if' a '<'' b 'then' b '='' b '+' 1 'else' 3,
+if a > b then b = b + 1,
+if a < b then b = b + 1 else 3,
 
-'while' '(' condition ')' 
-    'do' condition '=' 'false',
+while ( a < b ) 
+    do condition = false,
 
-'repeat' a '=' a + 1 
-    'until' a '>=' 100,
+repeat a = a + 1 
+    until a >= 100,
+    
+exit,
+exit 0,
+exit -123,
+exit when a > b,
+exit when a < b,
+exit when a <= b,
+exit when a not = b,
+exit when a < b and a >= b,
+exit when a < b or a = b,
 
-'exit',
-'exit' 0,
-'exit' -123,
-'exit' 'when' a '>'' b,
-'exit' 'when' a '<'' b,
-'exit' 'when' a '<='' b,
-'exit' 'when' a 'not' '='' b,
-'exit' 'when' a '<' b and a '>=' b,
-'exit' 'when' a '<' b or a '=' b,
+exit 3 when a < 3,
 
-'exit' 3 'when' a < 3,
+write "print this to the console",
 
-'write' "print this to the console"
+newline,
+integer,
+boolean,
+true,
+false,
 
-'newline',
-'integer',
-'boolean',
-'true',
-'false'
+function somefunc ( ) : boolean
+    write "do somefunc",
+    newline,
+    return true,
 
-'function' somefunc '(' ')' ':' 'boolean'
-    'write' "do somefunc",
-    'newline',
-    'return' 'true',
+somefunc ( ), % call some func
 
-somefunc '(' ')', % call some func
+procedure someproc (
+        a : integer , 
+        b : integer )
+    write "procedure",
+    newline,
+    return,
 
-'procedure' someproc '('
-        a ':' 'integer' , 
-        b ':' 'integer' ')'
-    'write' "procedure",
-    'newline',
-    'return'
-
-someproc '(' 1 ',' 2 ')', % call someproc
+someproc ( 1 , 2 ), % call someproc
 
 % defining arrays with some offsets as well
-'var' 1d_array '[' 3 ']',
-'var' 2d_array '[' 3 ',' 4']',
-'var' 2d_offset_array '[' 2 '..' 6 ',' 2 '..'' 4']',
+var 1d_array [ 3 ],
+var 2d_array [ 3 , 4],
+var 2d_offset_array [ 2 .. 6 , 2 .. 4],
 
-some_array '[' 3 ',' 4 ']' '='' 3,
+some_array [ 3 , 4 ] = 3,
 
 %this is a comment
-'write' "and this" % is a comment following a thing
+write "and this", % is a comment following a thing
