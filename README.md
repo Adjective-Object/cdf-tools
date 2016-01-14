@@ -3,9 +3,7 @@
 Simple tmLanguage package for syntax hilighting the 488 languagefor UofT's 
 csc488 compilers class, Spring 2016 in Sublime Text.
 
-<div style="text-align:center;">
-<img src="http://i.imgur.com/splATgv.png"/>
-</div>
+![code-sample](http://i.imgur.com/AUCStTK.png)
 
 ## Installation
 
