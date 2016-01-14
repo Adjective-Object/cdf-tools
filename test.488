@@ -5,8 +5,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
     % testing statements
-    var a := 3,
-    var b := 2,
+    var a : integer,
+    var b : integer,
     if a < 3 
         then a = 3,
     
@@ -48,8 +48,6 @@
     write "print this to the console",
 
     newline,
-    integer,
-    boolean,
     true,
     false,
 

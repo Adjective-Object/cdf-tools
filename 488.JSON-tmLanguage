@@ -10,7 +10,7 @@
 
         {   //operators
             "name": "storage.function.488",
-            "match": "(:=|-|\\*|<|\\+|-|=|<|<=|>|>=|not|and|or)"
+            "match": "(:|-|\\*|<|\\+|-|=|<|<=|>|>=|not|and|or)"
         },
 
         {   // control tokens
@@ -19,7 +19,7 @@
         },
 
         {   // typedef tokens
-            "name": "storage.class.type.488",
+            "name": "variable.other.generic-type.488",
             "match": "\\b(integer|boolean|text)\\b"
         },
 

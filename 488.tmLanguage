@@ -12,7 +12,7 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>(:=|-|\*|&lt;|\+|-|=|&lt;|&lt;=|&gt;|&gt;=|not|and|or)</string>
+			<string>(:|-|\*|&lt;|\+|-|=|&lt;|&lt;=|&gt;|&gt;=|not|and|or)</string>
 			<key>name</key>
 			<string>storage.function.488</string>
 		</dict>
@@ -26,7 +26,7 @@
 			<key>match</key>
 			<string>\b(integer|boolean|text)\b</string>
 			<key>name</key>
-			<string>storage.class.type.488</string>
+			<string>variable.other.generic-type.488</string>
 		</dict>
 		<dict>
 			<key>match</key>
