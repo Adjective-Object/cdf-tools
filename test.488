@@ -57,7 +57,13 @@
         return true,
     },
 
-    somefunc ( ), % call some func
+    var tern_test : text,
+    tern_test := (a == 3 
+        ? "yes" 
+        : "no"),
+
+    var somefunc_ret : boolean,
+    somefunc_ret = somefunc ( ), % call some func
 
     procedure someproc (
             a : integer , 

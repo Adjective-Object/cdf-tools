@@ -12,7 +12,7 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>(:|-|\*|&lt;|\+|-|=|&lt;|&lt;=|&gt;|&gt;=|not|and|or)</string>
+			<string>(\?|:|-|\*|&lt;|\+|-|=|&lt;|&lt;=|&gt;|&gt;=|not|and|or)</string>
 			<key>name</key>
 			<string>storage.function.488</string>
 		</dict>
@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>-?[0-9]*(?=[^\w])</string>
+			<string>\b-?[0-9]*\b</string>
 			<key>name</key>
 			<string>constant.numeric.488</string>
 		</dict>
