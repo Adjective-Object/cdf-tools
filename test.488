@@ -4,13 +4,23 @@
 %   its the bees knees                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
-    var a : integer,
-    var b : integer,
-    var condtion : boolean,
-    var string : text,
+    % testing statements
+    var a := 3,
+    var b := 2,
+    if a < 3 
+        then a = 3,
+    
+    if(a > 3)
+        then a = a - 3 
+        else a = a + 3,
 
-    a := 3 + 2,
-    b := a + 2,
+    while a > 3 do {
+        exit
+    }
+
+    repeat a = a + 1
+        until x > 3
+
     string := "testtring",
     condition := true
 

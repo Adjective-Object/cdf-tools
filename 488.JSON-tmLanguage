@@ -13,27 +13,27 @@
             "match": "(:=|-|\\*|<|\\+|-|=|<|<=|>|>=|not|and|or)"
         },
 
-        {   //quoted control symbols
+        {   // control tokens
             "name": "keyword.control.488",
-            "match": "(if|else|then|var|repeat|until|while|do|exit|not|when|write|newline|return|:|\\.\\.)"
+            "match": "\\b(if|else|then|var|repeat|until|while|do|exit|not|when|write|newline|return|:|\\.\\.)\\b"
         },
 
-        {   //quoted typedef symbols
+        {   // typedef tokens
             "name": "storage.class.type.488",
-            "match": "(integer|boolean|text)"
+            "match": "\\b(integer|boolean|text)\\b"
         },
 
-        {
+        {   // boolean tokens
             "name": "constant.language.boolean.488",
-            "match": "(true|false)"
+            "match": "\\b(true|false)\\b"
         },
 
-        {   //quoted symbol
+        {   //function or procedure tokens
             "name": "entity.name.function.488",
             "match": "(function|procedure)\\s*(\\w*+)?"
         },
 
-        // {   // errors on unknown quoted symbol
+        // {   // errors on unknown quoted token
             // "name": "invalid.488",
             // "match": "'[^\\s]*'"
         // },
