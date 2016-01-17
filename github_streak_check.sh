@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # check the input thing
 if [ $# -lt 1 ]; then
@@ -18,8 +18,10 @@ colormatch=`echo ${matcharr[-1]} | grep -oz 'fill="#[a-fA-F0-9]*"'`
 if [ $colormatch = 'fill="#eeeeee"' ]; then
     if [ $# -eq 1 ]; then
         echo "no commits today"
+        exit 1
     else 
         echo ${@:2}
+        exit 1
     fi
 fi
 
