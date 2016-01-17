@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check the input thing
 if [ $# -lt 1 ]; then
