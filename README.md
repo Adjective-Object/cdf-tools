@@ -18,7 +18,7 @@ run `crontab -e` in your shell, and add the following lines to your crontab
 00 23 * * * /<path_to_github_streak>/github_streak_check.sh <username> "1 hour to commit"
 30 23 * * * /<path_to_github_streak>/github_streak_check.sh <username> "30 min. to commit"
 45 23 * * * /<path_to_github_streak>/github_streak_check.sh <username> "15 min. to commit"
-0 24 * * * /<path_to_github_streak>/github_streak_check.sh <username> "your streak is broken!"
+0  0  * * * /<path_to_github_streak>/github_streak_check.sh <username> "your streak is broken!"
 ```
 
 You will be emailed the specified message by crontab if you have not committed
