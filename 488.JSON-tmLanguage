@@ -10,7 +10,7 @@
 
         {   //operators
             "name": "storage.function.488",
-            "match": "(\\?|:|-|\\*|<|\\+|/|-|=|<|<=|>|>=|not|and|or)"
+            "match": "(\\?|:|-|\\*|<|\\+|/|-|=|<|<=|>|>=|\\bnot\\b|\\band\\b|\\bor\\b)"
         },
 
         {   // control tokens
@@ -30,7 +30,7 @@
 
         {   //function or procedure tokens
             "name": "entity.name.function.488",
-            "match": "(function|procedure)\\s*(\\w*+)?"
+            "match": "\\b(function|procedure)\\s*(\\w*+)?"
         },
 
         // {   // errors on unknown quoted token
