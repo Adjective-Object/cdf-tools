@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Login Credentials
-# Set these to your natural language classifier's login creds
+# login credentials
+# set these to your natural language classifier's login creds
 # can be found @ console.ng.bluemix.net, then click 
-#   > Dashboard
-#     > Natural Language Classifier
-#       > Service Credentials
+#   > dashboard
+#     > natural language classifier
+#       > service credentials
 username=""
 password=""
 
@@ -17,25 +17,43 @@ classify_csv () {
     # $1 : classifier id
     # $2 : csv
 
+    # try to make it all one big json list
+    echo "{ \"items\" = ["
+
     while IFS='' read -r line || [[ -n "$line" ]]; do
+
         len_line=${#line[@]}
-        len_text=$((len_line-1))
+        len_text=$((len_line - 1))
+
         class=${line:0:$len_text} 
         text=${line:len_text}
+    
+        # open the object for this test string
+        # and fill out it's known fields
+        echo "{"
+        echo "\"class\" : \"$class\","
+        echo "\"text\" : \"$text\","
 
-        echo "class:" $class
-        echo "text:" $text
- 
+        # collect the output of testing
+        # and pretty print it
         result=`curl -G -u "$username":"$password" \
             "$api_url/classifiers/$1/classify" --silent \
                 --data-urlencode "text=$text"`
-
-        echo "expected:" $class
-        echo "result:"  $result
-
+    
+        echo "\"result\" : "
         echo $result | python -m json.tool
 
+        # close the current json object and add a trailing comma
+        echo "},"
+
     done < "$2" 
+
+    # This is a hack: put an empty object at the end of the list
+    # to make the trailing comma from the previous object not break
+    # a json parser
+    echo "{}"
+
+    echo "]}"
 }
 
 
@@ -135,7 +153,7 @@ else
 
     echo "usage: $0 <action> <arguments..>"
     echo "  actions:"
-    echo "    query <id> : check the status of a classifier. If no classifier" 
+    echo "    query <id> : check the status of a classifier. If no classifcalm-texture-noiseier" 
     echo "                 id is supplied, it queries the overall status of "
     echo "                 all classifiers"
     echo ""
@@ -144,7 +162,7 @@ else
     echo ""
     echo "    delete <id> : deletes a given classifier"
     echo ""
-    echo "    train <name> <ibmcsv>: Trains a classifier with an ibm csv"
+    echo "    train <name> <ibmcsv>: Trains a classifier with an ibm csv"t
     echo ""
     echo "    help : print this help text"
 
