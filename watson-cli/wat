@@ -23,10 +23,10 @@ classify_csv () {
     while IFS='' read -r line || [[ -n "$line" ]]; do
 
         len_line=${#line[@]}
-        len_text=$((len_line - 1))
+        len_text=$((len_line - 2))
 
-        class=${line:0:$len_text} 
-        text=${line:len_text}
+        text=${line:0:$len_text} 
+        class=${line:len_text}
     
         # open the object for this test string
         # and fill out it's known fields
@@ -97,8 +97,7 @@ else if [ "$action" = "classify" ]; then
         echo "using classifier $2 on text '$3'"
 
         classify_csv $2 $3
-
-        echo $classification_result | python -m json.tool
+        exit 0
     else 
         echo "action 'classify' needs a classifier id"  1>&2
         exit 1
