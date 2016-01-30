@@ -5,7 +5,7 @@ program.
 
 ## Utilities
  - [Github Streak Checker / Reminder](./github-streak-reminder)
- - [IBM Watson Command Line Interface](.watson-cli/)
+ - [IBM Watson Command Line Interface](./watson-cli/)
 
 ## Syntax Highlighting
  - [NIOS II](./syntax-NIOS-II)
