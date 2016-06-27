@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # check the input thing
 if [ $# -lt 1 ]; then
@@ -10,7 +10,8 @@ fi
 contributions=`wget https://github.com/users/$1/contributions -qO-`
 
 # color matches
-matches=`echo $contributions | grep -oz '<rect[^\>]*>' --`
+today="$(date +'%Y-%m-%d')"
+matches=`echo $contributions | grep -oz '<rect[^\>]*data-date="'$today'"[^\>]*>' --`
 IFS=$'\n' read -rd '' -a matcharr <<<"$matches"
 colormatch=`echo ${matcharr[-1]} | grep -oz 'fill="#[a-fA-F0-9]*"'`
 
